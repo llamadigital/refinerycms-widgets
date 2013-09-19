@@ -1,0 +1,25 @@
+- index = part.new_record? ? part.object_id : part.to_param 
+
+div.page_part id = field
+  div.tab-area.ui-corner-bottom id="template_part_index_#{part.title}" data-index=index
+    = f.fields_for :parts, part, child_index: index do |j|
+      = j.hidden_field :title
+      = j.hidden_field :position
+      = j.hidden_field :locked
+      .widgets data-sortable='widgets'
+        = j.fields_for :widgets, part.widgets.sort_by(&:position) do |k|
+          = render 'refinery/admin/pages/widget_fields', f: k, type: k.object.widget_type
+      
+        - unless part.locked?
+          = content_tag(:a, :href => refinery.page_widgets_admin_widgets_path(:dialog => true), :title => 'Add widget', :id => "add_widget_#{j.object.title}")  do
+            .widget
+              .left
+                = refinery_icon_tag('add')
+                span.type Add widget
+              .clear
+        - else
+          .widget
+            .left
+              = refinery_icon_tag('lock')
+              span.type This page part is locked.
+            .clear

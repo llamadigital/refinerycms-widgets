@@ -1,0 +1,27 @@
+nb:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Lag en ny Template
+            reorder: Endre rekkefølgen på Templates
+            reorder_done: Ferdig å endre rekkefølgen Templates
+          records:
+            title: Templates
+            sorry_no_results: Beklager! Vi fant ikke noen resultater.
+            no_items_yet: Det er ingen Templates enda. Klikk på "Lag en ny Template" for å legge til din første template.
+          template:
+            view_live_html: Vis hvordan denne template ser ut offentlig <br/><em>(åpner i et nytt vindu)</em>
+            edit: Rediger denne template
+            delete: Fjern denne template permanent
+      templates:
+        show:
+          other: Andre Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

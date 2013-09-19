@@ -1,0 +1,27 @@
+it:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Aggiungi Nuovo Template
+            reorder: Riordina Templates
+            reorder_done: Termina il Riordino di Templates
+          records:
+            title: Templates
+            sorry_no_results: "Spiacenti! Nessun risultato trovato"
+            no_items_yet: Non ci sono ancora Templates. Clicca "Aggiungi Nuovo Template" per aggiungere il tuo primo template.
+          template:
+            view_live_html: Guarda live questo template <br/><em>(apre una nuova finestra)</em>
+            edit: Modifica questo template
+            delete: Rimuovi per sempre questo template
+      templates:
+        show:
+          other: Altri Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

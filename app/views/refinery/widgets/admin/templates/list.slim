@@ -1,0 +1,15 @@
+table.select_template
+  thead
+    tr
+      th Name
+      th Template parts
+      th Times used
+      th &nbsp;
+
+  tbody
+    - @templates.each do |template|
+      tr class = cycle('dark', 'light')
+        td = template.name
+        td = template.unlocked_template_parts.collect(&:name).to_sentence
+        td = Refinery::Page.where(template_id: template.id).count
+        td = link_to_function 'Use this template', "linkFromDialog('#{refinery.new_admin_page_path(parent_id: @parent_id, template_id: template.id)}')"

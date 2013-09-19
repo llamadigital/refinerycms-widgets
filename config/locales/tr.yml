@@ -1,0 +1,27 @@
+tr:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Yeni Ekle Template
+            reorder: Tekrar sirala Templates
+            reorder_done: Tekrar siralama tamamlandiTemplates
+          records:
+            title: Templates
+            sorry_no_results: Uzgunum! Herhangi bir sonuc bulunamadi.
+            no_items_yet: Herhangi bir Templates yok henuz.  Tikla "Yeni Ekle Template" eklemek senin ilk template.
+          template:
+            view_live_html: Bunu canlu template goruntule <br/><em>(yeni bir pencerede acar)</em>
+            edit: Bunu Duzenle template
+            delete: Bunu Sil template sonsuza dek
+      templates:
+        show:
+          other: Diger Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

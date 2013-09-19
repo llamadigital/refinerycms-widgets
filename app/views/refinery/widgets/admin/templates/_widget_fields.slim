@@ -1,0 +1,26 @@
+.widget data-sort-item='widget'
+  .banner
+    .left
+      span.handle title="Reorder"
+        = refinery_icon_tag('arrow_switch')
+      span.type
+        = f.object.ultimate_widget_type.name if f.object.widget_type
+        - if f.object.times_used > 1
+          span.sub-title style = 'margin-left: 20px;' Used in #{pluralize (f.object.times_used-1), 'other place'}
+    .right 
+      .icons
+        = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
+        = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
+  .inner.clear style="margin-top:40px;"
+    .field.clear
+      = f.hidden_field :sub_type
+      = f.hidden_field :_destroy, 'data-meta' => 'destroy'
+      = f.hidden_field :position, 'data-meta' => 'position'
+      = f.hidden_field :widget_id
+      = f.hidden_field :locked
+      = f.label :name
+      = f.text_field :name
+    = f.fields_for f.object.widget_type.association_name do |j|
+      = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j
+  .clear
+    

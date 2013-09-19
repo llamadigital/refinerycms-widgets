@@ -1,0 +1,4 @@
+= instantiate_builder('page', @page, {}).fields_for :parts, @page_part, child_index: @page_part_index do |j|
+  = j.fields_for :widgets, @widget, child_index: @widget.object_id do |k|
+    = render("refinery/admin/pages/widget_fields", f: k, mode: 'edit')
+

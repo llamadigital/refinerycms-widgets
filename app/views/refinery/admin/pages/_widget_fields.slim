@@ -1,0 +1,46 @@
+.widget data-sort-item='widget'
+  .banner
+    .left
+      span.handle title="Reorder"
+        = refinery_icon_tag('arrow_switch')
+      span.type
+        = f.object.ultimate_widget_type.name if f.object.widget_type
+        - if f.object.times_used > 1
+          span.sub-title style = 'margin-left: 20px;' Used in #{pluralize (f.object.times_used-1), 'other place'}
+    .right 
+      .icons
+        - if f.object.locked?
+          span title = 'Locked'
+            = refinery_icon_tag('lock')
+        - else
+          = f.label :display, :class => 'inline'
+          = f.check_box :display, :class => 'simple-itoggle'
+          = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
+          = link_to_function(refinery_icon_tag('edit'), 'showWidgetEdit(this)', :title => "Edit widget" ) unless local_assigns.has_key?(:mode) && mode == 'edit'
+        = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
+  .inner.clear style="margin-top:40px;"
+    .previewing style=("display:none;" if local_assigns.has_key?(:mode) && mode == 'edit')
+      .field
+        = f.label :name
+        = f.object.name
+      = f.fields_for f.object.widget_type.association_name do |j|
+        = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_preview_partial}", :f => j
+
+    .editing style=("display:none;" unless local_assigns.has_key?(:mode) && mode == 'edit')
+      .field.clear
+        = f.hidden_field :sub_type
+        = f.hidden_field :_destroy, 'data-meta' => 'destroy'
+        = f.hidden_field :position, 'data-meta' => 'position'
+        = f.hidden_field :widget_id
+        = f.hidden_field :locked
+        = f.hidden_field :layout
+        = f.label :name
+        - if f.object.locked?
+          = text_field_tag :name, f.object.name, :disabled => true
+          = f.hidden_field :name
+        - else
+          = f.text_field :name
+      = f.fields_for f.object.widget_type.association_name do |j|
+        = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j
+  .clear
+    

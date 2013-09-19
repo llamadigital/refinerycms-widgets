@@ -1,0 +1,18 @@
+<li class='clearfix record <%= cycle("on", "on-hover") %>' id="<%= dom_id(template) -%>">
+  <span class='title'>
+    <%= template.name %>
+  </span>
+  <span class='sub-title'>
+    Used <%= pluralize template.pages.count, 'time' %>
+  </span>
+  <span class='actions'>
+    
+    <%= link_to refinery_icon_tag("application_edit.png"), refinery.edit_widgets_admin_template_path(template),
+         :title => t('.edit') %>
+    <%= link_to refinery_icon_tag("delete.png"), refinery.widgets_admin_template_path(template),
+        :class => "cancel confirm-delete",
+        :title => t('.delete'),
+        :confirm => t('message', :scope => 'refinery.admin.delete', :title => template.name),
+        :method => :delete %>
+  </span>
+</li>

@@ -1,0 +1,27 @@
+fr:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Créer un(e) nouve(au/l/lle) Template
+            reorder: Réordonner les Templates
+            reorder_done: Fin de réordonnancement des Templates
+          records:
+            title: Templates
+            sorry_no_results: "Désolé ! Aucun résultat."
+            no_items_yet: 'Il n''y a actuellement aucun(e) Template. Cliquer sur "Créer un(e) nouve(au/l/lle) Template" pour créer votre premi(er/ère) template.'
+          template:
+            view_live_html: Voir ce(t/tte) template <br/><em>(Ouvre une nouvelle fenêtre)</em>
+            edit: Modifier ce(t/tte) template
+            delete: Supprimer définitivement ce(t/tte) template
+      templates:
+        show:
+          other: Autres Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

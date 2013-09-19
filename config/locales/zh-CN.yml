@@ -1,0 +1,29 @@
+zh-CN:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: 建立新的 Template
+            reorder: 对 Templates 重新排序
+            reorder_done: 对 Templates 的重新排序结束
+          records:
+            title: Templates
+            sorry_no_results: 对不起，未找到结果。 #Sorry! There are no results found.
+
+            # There are no Templates yet. Click "Add New Template" to add your first template.
+            no_items_yet: 目前没有 Templates . 点击 "Add New Template" 创建一个template.
+          template:
+            view_live_html: 查看 template 的最新内容.<br/><em>(新窗口中打开)</em>
+            edit: 编辑 template
+            delete: 永久删除 template
+      templates:
+        show:
+          other: 其他 Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

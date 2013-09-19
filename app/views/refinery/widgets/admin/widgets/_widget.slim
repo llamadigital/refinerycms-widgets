@@ -1,0 +1,2 @@
+= f.fields_for f.object.widget_type.association_name do |j|
+  = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j

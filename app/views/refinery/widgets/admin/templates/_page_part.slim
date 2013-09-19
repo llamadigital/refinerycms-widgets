@@ -1,0 +1,22 @@
+- template_part = f.object.template_part(field)
+- index = template_part.new_record? ? template_part.object_id : template_part.to_param
+
+div.tab-area.ui-corner-bottom id="template_part_index_#{field}" data-index=index
+  = f.fields_for :template_parts, template_part, child_index: index do |j|
+    = j.hidden_field :name
+
+    .field.clear
+      = j.label :locked, class: 'inline'
+      = j.select :locked, [['Yes', true], ['No', false]]
+      = j.hidden_field :display
+
+    .widgets data-sortable='widgets'
+      = j.fields_for :widgets, template_part.widgets.sort_by(&:position) do |k|
+        = render 'refinery/widgets/admin/templates/widget_fields', f: k, type: k.object.widget_type
+    
+      = content_tag(:a, :href => refinery.template_widgets_admin_widgets_path(:dialog => true), :title => 'Add widget', :id => "add_widget_#{j.object.name}")  do
+        .widget
+          .left
+            = refinery_icon_tag('add')
+            span.type Add widget
+          .clear

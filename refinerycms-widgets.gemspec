@@ -1,0 +1,21 @@
+# Encoding: UTF-8
+
+Gem::Specification.new do |s|
+  s.platform          = Gem::Platform::RUBY
+  s.name              = 'refinerycms-widgets'
+  s.version           = '0.0.1'
+  s.description       = 'Ruby on Rails Widgets extension for Refinery CMS'
+  s.date              = '2013-09-06'
+  s.summary           = 'Widgets extension for Refinery CMS'
+  s.require_paths     = %w(lib)
+  s.files             = Dir["{app,config,db,lib}/**/*"]
+  s.authors           = 'Nick Bolt'
+
+  # Runtime dependencies
+  s.add_dependency             'refinerycms-core',    '~> 2.1.0'
+  s.add_dependency             'slim-rails'
+  s.add_dependency             'deface'
+
+  # Development dependencies (usually used for testing)
+  s.add_development_dependency 'refinerycms-testing', '~> 2.1.0'
+end

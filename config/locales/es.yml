@@ -1,0 +1,28 @@
+es:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+#        article: masculino/femenino
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Crear nuevo template
+            reorder: Reordenar templates
+            reorder_done: Reordenación de templates completada
+          records:
+            title: Templates
+            sorry_no_results: Lo siento, no hay resultados
+            no_items_yet: No hay templates todavía. Pulsa en "Crear nuevo Template" para crear tu primer template.
+          template:
+            view_live_html: Ver este template como abierto al público <br/><em>(abre en ventana nueva)</em>
+            edit: Editar este template
+            delete: Borrar este template para siempre
+      templates:
+        show:
+          other: Otros templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name

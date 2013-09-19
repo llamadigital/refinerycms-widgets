@@ -1,0 +1,27 @@
+cs:
+  refinery:
+    plugins:
+      templates:
+        title: Templates
+    widgets:
+      admin:
+        templates:
+          actions:
+            create_new: Přidat Template
+            reorder: Řadit Templates
+            reorder_done: Konec řazení Templates
+          records:
+            title: Templates
+            sorry_no_results: Litujeme, ale nebyly nalezny žádné výsledky.
+            no_items_yet: Zatím nebyly vytvořeny žádné Templates. Zvolte "Přidat Template" pro přidání prvního template.
+          template:
+            view_live_html: Zobrazit náhled template<br/><em>(otevře se v novém okně)</em>
+            edit: Upravit template
+            delete: Smazat template
+      templates:
+        show:
+          other: Další Templates
+  activerecord:
+    attributes:
+      'refinery/widgets/template':
+        name: Name
