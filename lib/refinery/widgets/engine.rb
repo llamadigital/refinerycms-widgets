@@ -24,8 +24,6 @@ module Refinery
           config.register_stylesheet "refinery/widgets", :media => 'screen'
           config.register_stylesheet "refinery/engage.itoggle", :media => 'screen'
         end
-
-        Refinery::AdminController.helper(Refinery::Widgets::Admin::WidgetsHelper)
       end
 
       config.after_initialize do

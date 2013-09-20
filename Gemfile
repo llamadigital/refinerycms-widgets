@@ -14,12 +14,13 @@ end
 
 platforms :ruby do
   gem 'sqlite3'
-  gem 'mysql2'
   gem 'pg'
 end
 
 group :development, :test do
   gem 'refinerycms-testing', '~> 2.1.0'
+  gem 'faker'
+  gem 'guard-rspec'
 
   platforms :ruby do
     require 'rbconfig'
@@ -36,3 +37,5 @@ group :assets do
   gem 'coffee-rails'
   gem 'uglifier'
 end
+
+gem 'rubyzip', '~> 0.9.9'

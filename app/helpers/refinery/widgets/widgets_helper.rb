@@ -33,3 +33,4 @@ module Refinery
 end
 
 ::ApplicationController.send(:helper, Refinery::Widgets::WidgetsHelper)
+::Refinery::AdminController.helper(Refinery::Widgets::WidgetsHelper)
