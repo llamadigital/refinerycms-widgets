@@ -22,7 +22,7 @@ module Refinery
 
       def render_page_part(page, part)
         ret = ''
-        page.parts.find_by_title(part.downcase).widgets.where(display: true).each do |widget|
+        page.parts.find_by_title(part).widgets.where(display: true).each do |widget|
           ret += render("refinery/widgets/#{widget.widget_type.front_partial}", :widget => widget)
         end
         raw ret
