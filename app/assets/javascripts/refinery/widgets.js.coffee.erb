@@ -21,8 +21,6 @@ jQuery ->
         $.ajax({url: url, data: data}).done (data) ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
-          console.log target
-          console.log activePart
           window.parent.initWidgets()
           window.parent.refinery_dialog_success()
     $('#new_widget #widget_type.page').change (event) ->
@@ -35,8 +33,6 @@ jQuery ->
         $.ajax({url: url, data: data}).done (data) ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
-          console.log target
-          console.log activePart
           window.parent.initWidgets()
           window.parent.refinery_dialog_success()
           
@@ -68,9 +64,6 @@ window.selectExistingWidgetForPage = (id) ->
   url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/show_for_page'
   $.ajax({url: url, data: data}).done (data) ->
     target = window.parent.$("a#add_widget_" + activePart)
-    console.log target
-    console.log data
-    console.log activePart
     $(data).insertBefore(target)
     window.parent.initWidgets()
     window.parent.refinery_dialog_success()
