@@ -17,7 +17,7 @@ jQuery ->
         activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
         index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
         data = {sub_type: selected, index: index}
-        url = '/cms/widgets/widget_types/new_for_template'
+        url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_template'
         $.ajax({url: url, data: data}).done (data) ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
@@ -31,7 +31,7 @@ jQuery ->
         activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
         index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
         data = {sub_type: selected, index: index}
-        url = '/cms/widgets/widget_types/new_for_page'
+        url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_page'
         $.ajax({url: url, data: data}).done (data) ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
@@ -53,7 +53,7 @@ window.selectExistingWidgetForTemplate = (id) ->
   activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
   index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
   data = {sub_type: 'Refinery::Widgets::Widget', index: index, id: id}
-  url = '/cms/widgets/widget_types/show_for_template'
+  url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/show_for_template'
   $.ajax({url: url, data: data}).done (data) ->
     target = window.parent.$("a#add_widget_" + activePart)
     $(data).insertBefore(target)
@@ -65,7 +65,7 @@ window.selectExistingWidgetForPage = (id) ->
   activePart = activePart.replace('page_part_', '')
   index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
   data = {sub_type: 'Refinery::Widgets::Widget', index: index, id: id}
-  url = '/cms/widgets/widget_types/show_for_page'
+  url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/show_for_page'
   $.ajax({url: url, data: data}).done (data) ->
     target = window.parent.$("a#add_widget_" + activePart)
     console.log target
