@@ -32,6 +32,7 @@ module Refinery
 
       config.to_prepare do
         Dir["#{File.dirname(__FILE__)}/../../../app/decorators/**/*.rb"].each { |f| load(f) }
+        Dir["#{File.dirname(__FILE__)}/../../../app/helpers/**/*.rb"].each { |f| load(f) }
       end
     end
   end
