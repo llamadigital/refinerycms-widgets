@@ -19,7 +19,8 @@ module Refinery
       end
 
       def self.all
-        Refinery::Widgets.config[:base_widgets].collect{|w| self.new(w) }
+        Refinery::Widgets.config[:base_widgets].collect{|w| self.new(w) } + 
+        Refinery::Widgets.config[:additional_widgets].collect{|w| self.new(w) }
       end
 
       def self.find(class_as_string)
