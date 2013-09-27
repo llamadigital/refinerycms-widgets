@@ -28,9 +28,16 @@ module Refinery
         raw ret
       end
 
+      def link_to_remove_field(label, builder)
+        ret = ''
+        ret += builder.hidden_field :_destroy, :class => 'destroy'
+        ret += link_to_function label, 'removeField(this)'
+        raw ret
+      end
+
     end
   end
 end
 
 ::ApplicationController.send(:helper, Refinery::Widgets::WidgetsHelper)
-::Refinery::AdminController.helper(Refinery::Widgets::WidgetsHelper)
+::Refinery::AdminController.send(:helper, Refinery::Widgets::WidgetsHelper)

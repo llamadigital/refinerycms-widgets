@@ -95,3 +95,8 @@ window.assessOrder = ->
   $('[data-sortable="widgets"]').each (index, value) ->
     $(value).find('[data-sort-item="widget"]').each (index, value) ->
       $(value).find('input[data-meta="position"]').val(index)
+
+window.removeField = (element) ->
+  fieldset = $(element).closest('fieldset')
+  fieldset.find('.destroy').val('1')
+  fieldset.hide()

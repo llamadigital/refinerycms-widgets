@@ -51,3 +51,14 @@ table.existing_widgets, table.select_template {
   }
 }
 .sub-title { font-size: 0.9em; opacity: 0.8; }
+
+form fieldset { 
+  margin: 5px;
+  border: 1px solid #DDD;
+  padding-top: 0px;
+}
+
+.s-margin { margin-top: 5px; margin-bottom: 5px; }
+.m-margin { margin-top: 10px; margin-bottom: 10px; }
+.l-margin { margin-top: 20px; margin-bottom: 20px; }
+.xl-margin { margin-top: 40px; margin-bottom: 40px; }
