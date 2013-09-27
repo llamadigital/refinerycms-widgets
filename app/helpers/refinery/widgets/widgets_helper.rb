@@ -10,6 +10,13 @@ module Refinery
         end
         link_to(name, '#', class: "add_fields", data: {id: id, fields: fields.gsub("\n", "")})
       end
+
+      def link_to_remove_field(label, builder)
+        ret = ''
+        ret += builder.hidden_field :_destroy, :class => 'destroy'
+        ret += link_to_function label, 'removeField(this)'
+        raw ret
+      end
       
       def widget_type_fields(type, template_part_form_builder)
         widget = Widget.new(sub_type: type.klass)
@@ -25,13 +32,6 @@ module Refinery
         page.parts.find_by_title(part).widgets.where(display: true).each do |widget|
           ret += render("refinery/widgets/#{widget.widget_type.front_partial}", :widget => widget)
         end
-        raw ret
-      end
-
-      def link_to_remove_field(label, builder)
-        ret = ''
-        ret += builder.hidden_field :_destroy, :class => 'destroy'
-        ret += link_to_function label, 'removeField(this)'
         raw ret
       end
 
