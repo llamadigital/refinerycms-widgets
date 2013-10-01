@@ -8,6 +8,7 @@ jQuery ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')
     $(this).before($(this).data('fields').replace(regexp, time))
+    init_modal_dialogs()
     event.preventDefault()
     
   if $('#new_widget #widget_type').length > 0
