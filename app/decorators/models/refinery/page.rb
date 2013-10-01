@@ -5,7 +5,7 @@ Refinery::Page.class_eval do
   
   before_validation :validate_widgets
 
-  def self.find_url_by_widget(widget_class)
+  def self.find_by_widget_class(widget_class)
     instance = widget_class.first
     return nil if instance.nil?
     container = widget_class.first.widget.container
