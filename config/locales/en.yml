@@ -21,7 +21,14 @@ en:
       templates:
         show:
           other: Other Templates
+    admin: 
+      nested_image_picker: 
+        none_selected: There is currently no image selected, please click here to add one.
+        remove_current: Remove current image
+        change: Click here to pick an image
+        show: Show
   activerecord:
     attributes:
       'refinery/widgets/template':
         name: Name
+
