@@ -5,6 +5,14 @@ Refinery::Page.class_eval do
   
   before_validation :validate_widgets
 
+  def self.find_url_by_widget(widget_class)
+    instance = widget_class.first
+    return nil if instance.nil?
+    container = widget_class.first.widget.container
+    return nil unless container.class == Refinery::PagePart
+    container.page
+  end
+
   def widgets
     parts.collect(&:widgets).flatten
   end
