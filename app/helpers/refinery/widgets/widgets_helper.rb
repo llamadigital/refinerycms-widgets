@@ -46,5 +46,6 @@ module Refinery
 end
 
 ::ApplicationController.send(:helper, Refinery::Widgets::WidgetsHelper)
+::ApplicationController.send(:include, Refinery::Widgets::WidgetsHelper)
 ::Refinery::AdminController.send(:helper, Refinery::Widgets::WidgetsHelper)
 ::ActionView::Base.send(:include, Refinery::Widgets::WidgetsHelper)
