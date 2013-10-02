@@ -62,3 +62,26 @@ form fieldset {
 .m-margin { margin-top: 10px; margin-bottom: 10px; }
 .l-margin { margin-top: 20px; margin-bottom: 20px; }
 .xl-margin { margin-top: 40px; margin-bottom: 40px; }
+
+@media (min-width:768px){.form-horizontal .form-group{margin-left:-15px;margin-right:-15px;}}.form-horizontal .form-group .row{margin-left:-15px;margin-right:-15px;}
+@media (min-width:768px){.form-horizontal .control-label{text-align:right;}}.btn{display:inline-block;padding:6px 12px;margin-bottom:0;font-size:14px;font-weight:500;line-height:1.428571429;text-align:cente$
+.row { padding-left: 15px; }
+.row:before,.row:after{content:" ";display:table;}
+.row:after{clear:both;}
+.row:before,.row:after{content:" ";display:table;}
+.row:after{clear:both;}
+@media (min-width:768px){.row{margin-left:-15px;margin-right:-15px;}}.row .row{margin-left:-15px;margin-right:-15px;}
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12,.col-sm-1,.col-sm-2,.col-sm-3,.col-sm-4,.col-sm-5,.col-sm-6,.col-sm-7,.col-sm-8,.col-sm-9,.col-sm-10,.col-sm-11,.col-sm$
+.col-1,.col-2,.col-3,.col-4,.col-5,.col-6,.col-7,.col-8,.col-9,.col-10,.col-11,.col-12{float:left;}
+.col-1{width:8.333333333333332% !important;}
+.col-2{width:16.666666666666664% !important;}
+.col-3{width:25% !important;}
+.col-4{width:33.33333333333333% !important;}
+.col-5{width:41.66666666666667% !important;}
+.col-6{width:50% !important;}
+.col-7{width:58.333333333333336% !important;}
+.col-8{width:66.66666666666666% !important;}
+.col-9{width:75% !important;}
+.col-10{width:83.33333333333334% !important;}
+.col-11{width:91.66666666666666% !important;}
+.col-12{width:100% !important;}
