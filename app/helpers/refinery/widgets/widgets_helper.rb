@@ -36,9 +36,11 @@ module Refinery
       end
       
       def call_widget_helpers(page)                                                                                                                                                                            
-        page.widgets.each do |w|                                                                                                                                                                               
-          eval w.ultimate_widget_type.association_name                                                                                                                                                         
-        end                                                                                                                                                                                                    
+        if page
+          page.widgets.each do |w|                                                                                                                                                                               
+            eval w.ultimate_widget_type.association_name                                                                                                                                                         
+          end                                                                                                                                                                                                    
+        end
       end 
 
     end
