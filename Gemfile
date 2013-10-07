@@ -3,6 +3,8 @@ source "http://rubygems.org"
 gemspec
 
 gem 'refinerycms', '~> 2.1.0'
+gem 'refinerycms-nested_models',
+  :git => 'https://github.com/llamadigital/refinerycms-nested_models.git'
 
 # Database Configuration
 platforms :jruby do

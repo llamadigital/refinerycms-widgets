@@ -1,7 +1,14 @@
+GIT
+  remote: https://github.com/llamadigital/refinerycms-nested_models.git
+  revision: a32453d6535436ab22532b3ea7d8a2f1541f4ae4
+  specs:
+    refinerycms-nested_models (0.0.1)
+      refinerycms-core (~> 2.1.0)
+
 PATH
   remote: .
   specs:
-    refinerycms-widgets (0.0.2)
+    refinerycms-widgets (0.0.3)
       deface
       refinerycms-core (~> 2.1.0)
       slim-rails
@@ -289,6 +296,7 @@ DEPENDENCIES
   guard-rspec
   jruby-openssl
   refinerycms (~> 2.1.0)
+  refinerycms-nested_models!
   refinerycms-testing (~> 2.1.0)
   refinerycms-widgets!
   rubyzip (~> 0.9.9)
