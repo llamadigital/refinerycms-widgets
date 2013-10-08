@@ -13,6 +13,7 @@ Gem::Specification.new do |s|
 
   # Runtime dependencies
   s.add_dependency             'refinerycms-core',    '~> 2.1.0'
+  s.add_dependency             'refinerycms-nested_models' 
   s.add_dependency             'slim-rails'
   s.add_dependency             'deface'
 
