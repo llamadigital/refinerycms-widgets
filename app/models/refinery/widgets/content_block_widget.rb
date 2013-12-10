@@ -4,7 +4,7 @@ module Refinery
 
       acts_as_widget
 
-      attr_accessible :content
+      attr_accessible :content, :widget_id
 
       validates :content, :presence => true
 
