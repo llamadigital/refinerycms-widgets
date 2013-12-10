@@ -15,7 +15,7 @@ module Refinery
         ret = ''
         return ret unless page && page.parts.find_by_title(part)
         page.parts.find_by_title(part).widgets.where(display: true).each do |widget|
-          ret += render("refinery/widgets/#{widget.widget_type.front_partial}", :widget => widget)
+          ret += render("refinery/widgets/#{widget.widget_type.front_partial}", :widget => widget, :part => part)
         end
         raw ret
       end
