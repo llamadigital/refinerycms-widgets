@@ -6,8 +6,13 @@ Refinery::PagesController.class_eval do
               when "show"
                 Refinery::Page.find_by_path_or_id(params[:path], params[:id])
               end
-    @page || (error_404 if fallback_to_404)
-    call_widget_helpers(@page)
+    if @page
+      call_widget_helpers(@page)
+      @page
+    else
+      call_widget_helpers(::Refinery::Page.where(:menu_match => "^/404$").first)
+      error_404 if fallback_to_404
+    end
   end
 end
 
