@@ -1,0 +1,6 @@
+<% if f.object.deletable == false %>
+  <%= f.text_field :link_url, :style=> 'width:400px;', :disabled => 'true' %>
+<% else %>
+  <%= f.text_field :link_url, :style=> 'width:400px;' %>
+<% end %>
+

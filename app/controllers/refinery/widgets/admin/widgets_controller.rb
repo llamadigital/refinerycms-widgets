@@ -13,7 +13,7 @@ module Refinery
         end
         
         def page
-          @widgets = Refinery::Widgets::Widget.on_page.reusable
+          @widgets = Refinery::Widgets::Widget.on_page.reusable.has_name
           render :action => :new
         end
 

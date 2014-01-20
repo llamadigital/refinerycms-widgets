@@ -1,6 +1,6 @@
 #new_widget
   h3 Add new
-  = select_tag :widget_type, options_for_select([['Select type...', nil]] + Refinery::Widgets::WidgetType.all.map{|t| [t.name, t.klass_as_string] }), :class => current_page?(refinery.url_for(:action => 'page')) ? 'page' : 'template'
+  = select_tag :widget_type, options_for_select([['Select type...', nil]] + Refinery::Widgets::WidgetType.all.sort_by(&:name).map{|t| [t.name, t.klass_as_string] }), :class => current_page?(refinery.url_for(:action => 'page')) ? 'page' : 'template'
 
   h3 Select existing
   table.existing_widgets

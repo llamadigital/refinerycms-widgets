@@ -13,13 +13,16 @@ module Refinery
         :widget_id, :layout, :container
 
       
-      validates :name, :presence => true
       validate :validate_widget
 
       before_validation :update_widget
 
       def self.reusable
         where(widget_id: nil)
+      end
+      
+      def self.has_name
+        where(["name != ? AND name IS NOT NULL", ''])
       end
 
       def self.on_page

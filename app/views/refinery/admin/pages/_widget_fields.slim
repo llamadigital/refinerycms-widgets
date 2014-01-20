@@ -34,12 +34,13 @@
         = f.hidden_field :widget_id
         = f.hidden_field :locked
         = f.hidden_field :layout
-        = f.label :name
+        = f.label :name, nil, :class => 'inline'
         - if f.object.locked?
           = text_field_tag :name, f.object.name, :disabled => true
           = f.hidden_field :name
         - else
           = f.text_field :name
+          span.label-sup If you would like to reuse this widget enter a name here
       = f.fields_for f.object.widget_type.association_name do |j|
         = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j
   .clear
