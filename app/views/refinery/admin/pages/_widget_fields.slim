@@ -1,4 +1,4 @@
-.widget data-sort-item='widget'
+.widget data-sort-item='widget' class=('locked' if f.object.locked?)
   .banner
     .left
       span.handle title="Reorder"
@@ -18,7 +18,7 @@
           = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
           = link_to_function(refinery_icon_tag('edit'), 'showWidgetEdit(this)', :title => "Edit widget" ) unless local_assigns.has_key?(:mode) && mode == 'edit'
         = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
-  .inner.clear style="margin-top:40px;"
+  .inner.clear style="margin-top:40px; #{'display:none;' if f.object.locked?}"
     .previewing style=("display:none;" if local_assigns.has_key?(:mode) && mode == 'edit')
       .field
         = f.label :name

@@ -37,6 +37,9 @@
 .clear {
   clear: both;
 }
+.locked {
+  background-color: #DDDDDD;
+}
 table.existing_widgets, table.select_template {
   border-collapse: collapse;
   border-spacing: 0;
