@@ -17,6 +17,10 @@ Refinery::Page.class_eval do
     parts.collect(&:widgets).flatten
   end
 
+  def ordered_parts
+    (::Refinery::Pages.default_parts.collect{|dp| parts.find{|p| p.title == dp } } + parts).uniq
+  end
+
   private
     
     def validate_widgets

@@ -1,7 +1,7 @@
 <div class='field'>
   <div id='page-tabs' class='clearfix ui-tabs ui-widget ui-widget-content ui-corner-all'>
     <ul id='page_parts'>
-      <% f.object.parts.each_with_index do |part, index| %>
+      <% f.object.ordered_parts.each_with_index do |part, index| %>
         <li class="ui-state-default <%= 'ui-state-active' if index == 0 %>">
           <%= link_to "#{part.title.to_s.humanize}", "\##{part.title}" %>
         </li>
@@ -17,7 +17,7 @@
     </ul>
 
     <div id='page_part_editors'>
-      <% f.object.parts.each_with_index do |part,index| %>
+      <% f.object.ordered_parts.each_with_index do |part,index| %>
         <div class='page_part' id="<%= part.title %>">
           <%= render 'page_part', :f => f, :field => part.title, :part => part %>
         </div>
