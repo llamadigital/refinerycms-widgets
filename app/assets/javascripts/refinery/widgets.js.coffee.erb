@@ -2,6 +2,8 @@ jQuery ->
   $('[data-disabled-master]').each (index,element) ->
     $(element).change (event) -> 
       if ($(this).is(':checked'))
+        if $(this).is('[data-disabled-warning]')
+          alert $(this).attr('data-disabled-warning')
         $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').removeAttr('disabled')
       else
         $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').attr('disabled', true)

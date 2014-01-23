@@ -5,6 +5,8 @@ Refinery::Page.class_eval do
   
   before_validation :validate_widgets
 
+  before_save :change_template
+
   def self.find_by_widget_class(widget_class)
     instance = widget_class.first
     return nil if instance.nil?
@@ -26,6 +28,15 @@ Refinery::Page.class_eval do
     def validate_widgets
       widgets.each do |widget|
         widget.valid?
+      end
+    end
+
+    def change_template
+      if changes.has_key?(:template_id)
+        widgets.each{|w| w.destroy if w.layout == true}
+        template.template_parts.each do |tp|
+          tp.sychronize_widgets!(self)
+        end
       end
     end
 

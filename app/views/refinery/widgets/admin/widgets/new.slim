@@ -2,30 +2,31 @@
   h3 Add new
   = select_tag :widget_type, options_for_select([['Select type...', nil]] + Refinery::Widgets::WidgetType.all.sort_by(&:name).map{|t| [t.name, t.klass_as_string] }), :class => current_page?(refinery.url_for(:action => 'page')) ? 'page' : 'template'
 
-  h3 Select existing
-  table.existing_widgets
-    thead
-      tr.titles
-        th Name
-        th Type
-        - if current_page?(refinery.url_for(action: 'page'))
-          th Pages
-        - else
-          th Templates 
-        th &nbsp
-    tbody
-      - @widgets.each do |widget|
-        tr class = cycle('dark', 'light')
-          td = widget.name
-          td = widget.widget_type.name
+  - if @widgets.any?
+    h3 Select existing
+    table.existing_widgets
+      thead
+        tr.titles
+          th Name
+          th Type
           - if current_page?(refinery.url_for(action: 'page'))
-            td
-              = widget.pages.collect{|p| p.title }.to_sentence
+            th Pages
           - else
-            td
-              = widget.templates.collect{|p| p.name }.to_sentence
-          td
+            th Templates 
+          th &nbsp
+      tbody
+        - @widgets.each do |widget|
+          tr class = cycle('dark', 'light')
+            td = widget.name
+            td = widget.widget_type.name
             - if current_page?(refinery.url_for(action: 'page'))
-              = link_to_function('Select', "selectExistingWidgetForPage(#{widget.id})")
+              td
+                = widget.pages.collect{|p| p.title }.to_sentence
             - else
-              = link_to_function('Select', "selectExistingWidgetForTemplate(#{widget.id})")
+              td
+                = widget.templates.collect{|p| p.name }.to_sentence
+            td
+              - if current_page?(refinery.url_for(action: 'page'))
+                = link_to_function('Select', "selectExistingWidgetForPage(#{widget.id})")
+              - else
+                = link_to_function('Select', "selectExistingWidgetForTemplate(#{widget.id})")
