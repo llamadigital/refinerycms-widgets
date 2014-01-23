@@ -1,4 +1,12 @@
 jQuery ->
+  $('[data-disabled-master]').each (index,element) ->
+    $(element).change (event) -> 
+      if ($(this).is(':checked'))
+        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').removeAttr('disabled')
+      else
+        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').attr('disabled', true)
+
+
   if $('#new_widget #widget_type').length > 0
     $('#new_widget #widget_type.template').change (event) ->
       selected = $(this).val()

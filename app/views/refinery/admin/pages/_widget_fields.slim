@@ -14,34 +14,40 @@
             = refinery_icon_tag('lock')
         - else
           = f.label :display, :class => 'inline'
-          = f.check_box :display, :class => 'simple-itoggle'
+          = f.check_box :display, :class => 'checkbox'
           = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
           = link_to_function(refinery_icon_tag('edit'), 'showWidgetEdit(this)', :title => "Edit widget" ) unless local_assigns.has_key?(:mode) && mode == 'edit'
         = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
   .inner.clear style="margin-top:40px; #{'display:none;' if f.object.locked?}"
     .previewing style=("display:none;" if local_assigns.has_key?(:mode) && mode == 'edit')
-      .field
-        = f.label :name
-        = f.object.name
       = f.fields_for f.object.widget_type.association_name do |j|
         = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_preview_partial}", :f => j
 
     .editing style=("display:none;" unless local_assigns.has_key?(:mode) && mode == 'edit')
-      .field.clear
+      .clear
         = f.hidden_field :sub_type
         = f.hidden_field :_destroy, 'data-meta' => 'destroy'
         = f.hidden_field :position, 'data-meta' => 'position'
         = f.hidden_field :widget_id
         = f.hidden_field :locked
         = f.hidden_field :layout
-        = f.label :name, nil, :class => 'inline'
-        - if f.object.locked?
-          = text_field_tag :name, f.object.name, :disabled => true
-          = f.hidden_field :name
-        - else
-          = f.text_field :name
-          span.label-sup If you would like to reuse this widget enter a name here
+
+
       = f.fields_for f.object.widget_type.association_name do |j|
         = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j
+
+      - if f.object.locked?
+        = f.hidden_field :name
+      - else
+        .row.field.l-top-margin.m-bottom-margin data-disabled-container = true
+          .col-4
+            = f.check_box :reuse, :class => 'checkbox', 'data-disabled-master' => true
+            = f.label :reuse, nil, :class => 'inline'
+          .col-8
+            = f.label :name, nil, :class => 'inline'
+            - if f.object.reuse?
+              = f.text_field :name, 'data-disabled-slave' => true
+            - else
+              = f.text_field :name, :disabled => true, 'data-disabled-slave' => true
   .clear
     

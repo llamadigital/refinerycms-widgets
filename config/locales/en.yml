@@ -31,4 +31,7 @@ en:
     attributes:
       'refinery/widgets/template':
         name: Name
+      'refinery/widgets/widget':
+        name: Reference (Not displayed on site)
+        reuse: I would like to reuse this widget
 

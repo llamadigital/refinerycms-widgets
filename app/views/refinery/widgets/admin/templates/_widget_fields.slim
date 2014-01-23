@@ -12,15 +12,25 @@
         = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
         = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
   .inner.clear style="margin-top:40px;"
-    .field.clear
+    .clear
       = f.hidden_field :sub_type
       = f.hidden_field :_destroy, 'data-meta' => 'destroy'
       = f.hidden_field :position, 'data-meta' => 'position'
       = f.hidden_field :widget_id
       = f.hidden_field :locked
-      = f.label :name
-      = f.text_field :name
+
     = f.fields_for f.object.widget_type.association_name do |j|
       = render "refinery/widgets/admin/widgets/#{f.object.widget_type.admin_partial}", :f => j
+
+    .row.field.l-top-margin.m-bottom-margin data-disabled-container = true
+      .col-4
+        = f.check_box :reuse, :class => 'checkbox', 'data-disabled-master' => true
+        = f.label :reuse, nil, :class => 'inline'
+      .col-8
+        = f.label :name, nil, :class => 'inline'
+        - if f.object.reuse?
+          = f.text_field :name, 'data-disabled-slave' => true
+        - else
+          = f.text_field :name, :disabled => true, 'data-disabled-slave' => true
   .clear
     

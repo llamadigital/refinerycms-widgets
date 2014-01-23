@@ -1,4 +1,4 @@
-.inline{ float:left; margin-top: 5px; margin-right: 20px; }
+.inline{ float:left; margin-top: 5px; margin-right: 10px; }
 .tab-area{ border: 1px solid #CCC; padding: 10px; }
 .reuseable-block{ border: 1px solid #CCC }
 .widgets.ui-sortable {
@@ -66,6 +66,26 @@ form fieldset {
 .l-margin { margin-top: 20px; margin-bottom: 20px; }
 .xl-margin { margin-top: 40px; margin-bottom: 40px; }
 
+.s-top-pad { padding-top: 5px; }
+.m-top-pad { padding-top: 10px; }
+.l-top-pad { padding-top: 20px; }
+.xl-top-pad { padding-top: 40px; }
+
+.s-top-margin { margin-top: 5px; }
+.m-top-margin { margin-top: 10px; }
+.l-top-margin { margin-top: 20px; }
+.xl-top-margin { margin-top: 40px; }
+
+.s-bottom-pad { padding-bottom: 5px; }
+.m-bottom-pad { padding-bottom: 10px; }
+.l-bottom-pad { padding-bottom: 20px; }
+.xl-bottom-pad { padding-bottom: 40px; }
+
+.s-bottom-margin { margin-bottom: 5px; }
+.m-bottom-margin { margin-bottom: 10px; }
+.l-bottom-margin { margin-bottom: 20px; }
+.xl-bottom-margin { margin-bottom: 40px; }
+
 .row { padding-left: 15px; }
 .row:before,.row:after{content:" ";display:table;}
 .row:after{clear:both;}
@@ -96,3 +116,5 @@ span.label-sup {
   margin-left: 20px;
   font-size: 0.9em;
 }
+
+input.checkbox { margin-top: 8px; }
