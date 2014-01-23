@@ -1,9 +1,9 @@
 <div class='field row' data-disabled-container='true'>
-  <div class='col-4'>
-    <%= label_tag :change_template, 'I would like to change the template in use', class: 'inline' %>
-    <%= check_box_tag :change_template, '1', false, :class => 'checkbox', 'data-disabled-master' => true, 'data-disabled-warning' => 'Please note that this will adjust the widgets on this page, so you may wish to edit the page after saving to ensure the new widgets appear in the correct order.' %>
+  <div class='col-6'>
+    <%= label_tag :change_template, 'Check this box to select a different template for this page', class: 'inline' %>
+    <%= check_box_tag :change_template, '1', false, :class => 'checkbox', 'data-disabled-master' => true, 'data-disabled-warning' => 'Please note that changing the template will affect the widgets in use on this page. After changing the template press save and come back and check the widget order is correct.' %>
   </div>
-  <div class='col-8'>
+  <div class='col-6'>
     <%= f.label :template_id, nil, class: 'inline' %>
     <%= f.collection_select :template_id, ::Refinery::Widgets::Template.order(:name), :id, :name, {}, :disabled => 'disabled', 'data-disabled-slave' => true, :class => 'inline' %>
   </div>
