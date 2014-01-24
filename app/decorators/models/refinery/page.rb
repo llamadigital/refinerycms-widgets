@@ -23,6 +23,35 @@ Refinery::Page.class_eval do
     (::Refinery::Pages.default_parts.collect{|dp| parts.find{|p| p.title == dp } } + parts).uniq
   end
 
+  def self.find_or_create_by_link_url!(link_url, options={})
+    page = self.find_by_link_url(link_url)
+    if page
+      return page
+    else
+      page = self.new(
+        title: link_url.gsub(/\W/, ' ').strip.capitalize,
+        link_url: link_url,
+        deletable: false,
+        menu_match: "^#{link_url}(\/|\/.+?|)$",
+        show_in_menu: false
+      )
+      if options[:parent].present?
+        parent = self.find_by_link_url(options[:parent])
+        if parent.nil?
+          parent = self.find_or_create_by_link_url(options[:parent])
+        end
+        page.parent_id = parent.id
+      end
+      page.save!
+      Refinery::Pages.default_parts.each_with_index do |default_page_part, index|           
+        page.parts.create(:title => default_page_part, :body => nil, :position => index)    
+      end
+      page.template_id = ::Refinery::Widgets::Template.first.id
+      page.save!
+      page
+    end
+  end
+
   private
     
     def validate_widgets
