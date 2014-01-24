@@ -1,12 +1,6 @@
 jQuery ->
-  $('[data-disabled-master]').each (index,element) ->
-    $(element).change (event) -> 
-      if ($(this).is(':checked'))
-        if $(this).is('[data-disabled-warning]')
-          alert $(this).attr('data-disabled-warning')
-        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').removeAttr('disabled')
-      else
-        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').attr('disabled', true)
+
+  initDisabled()
 
 
   if $('#new_widget #widget_type').length > 0
@@ -44,6 +38,16 @@ jQuery ->
                         assessOrder()
                      })
 
+window.initDisabled = () ->
+  $('[data-disabled-master]').each (index,element) ->
+    $(element).change (event) -> 
+      if ($(this).is(':checked'))
+        if $(this).is('[data-disabled-warning]')
+          alert $(this).attr('data-disabled-warning')
+        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').removeAttr('disabled')
+      else
+        $(this).parents('[data-disabled-container]').find('[data-disabled-slave]').attr('disabled', true)
+
 window.selectExistingWidgetForTemplate = (id) ->
   activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
   index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
@@ -70,6 +74,7 @@ window.selectExistingWidgetForPage = (id) ->
 window.initWidgets = ->
   WYMeditor.init() 
   assessOrder()
+  initDisabled()
 
 window.linkFromDialog = (linkUrl) ->
   window.parent.location = linkUrl
