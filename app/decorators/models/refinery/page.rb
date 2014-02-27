@@ -61,7 +61,7 @@ Refinery::Page.class_eval do
     end
 
     def change_template
-      if changes.has_key?(:template_id)
+      if changes.has_key?(:template_id) && !self.new_record?
         widgets.each{|w| w.destroy if w.layout == true}
         template.template_parts.each do |tp|
           tp.sychronize_widgets!(self)
