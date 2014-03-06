@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-llama_widgets'
-  s.version           = '0.2.4'
+  s.version           = '0.2.5'
   s.description       = 'Ruby on Rails Widgets extension for Refinery CMS'
   s.summary           = 'Widgets extension for Refinery CMS'
   s.require_paths     = %w(lib)

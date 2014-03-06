@@ -23,7 +23,14 @@ module Refinery
           end
           extras = page_part_ids - template_part_ids
           extras.each do |w_id|
-            page_part.widgets.select{|x| x.widget_id == w_id }.first.destroy
+            page_part.widgets.find{|x| x.widget_id == w_id }.destroy
+          end
+          if page_part.locked?
+            unless page_part_ids == template_part_ids
+              self.widgets.sort_by(&:position).each do |widget|
+                page_part.widgets.find{|w| w.widget_id == widget.id }.update_attribute(:position, widget.position)
+              end
+            end
           end
           if page_part.locked != self.locked
             page_part.locked = self.locked
