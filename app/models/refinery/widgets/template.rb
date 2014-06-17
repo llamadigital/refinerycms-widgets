@@ -7,8 +7,6 @@ module Refinery
 
       has_many :pages, :class_name => 'Refinery::Page'
 
-      attr_accessible :name, :position, :template_parts_attributes
-
       validates :name, :presence => true, :uniqueness => true
       before_validation :validate_widgets
 

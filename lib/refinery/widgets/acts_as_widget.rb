@@ -19,7 +19,6 @@ module Refinery
           Widget.class_eval do
             has_one widget_type.association_name.to_sym, class_name: widget_type.klass_as_string, dependent: :destroy
             accepts_nested_attributes_for widget_type.association_name.to_sym
-            attr_accessible widget_type.attribute_param.to_sym
           end
         end
       end

@@ -3,7 +3,7 @@
 Gem::Specification.new do |s|
   s.platform          = Gem::Platform::RUBY
   s.name              = 'refinerycms-llama_widgets'
-  s.version           = '0.2.5'
+  s.version           = '0.3.0'
   s.description       = 'Ruby on Rails Widgets extension for Refinery CMS'
   s.summary           = 'Widgets extension for Refinery CMS'
   s.require_paths     = %w(lib)
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.authors           = 'Nick Bolt'
 
   # Runtime dependencies
-  s.add_dependency             'refinerycms-core',    '~> 2.1.0'
+  s.add_dependency             'refinerycms-core',    '~> 3.0.0.dev'
   s.add_dependency             'refinerycms-nested_models' 
   s.add_dependency             'slim-rails'
   s.add_dependency             'deface',              '~> 1.0.0'

@@ -22,6 +22,13 @@ module Refinery
           end
         end
 
+        private
+        def template_params
+          params.require(:template)
+          .permit(:name, :position,
+                  template_parts_attributes: [:name, :locked, :display, :id])
+        end
+
       end
     end
   end

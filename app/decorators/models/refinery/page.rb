@@ -1,5 +1,4 @@
 Refinery::Page.class_eval do
-  attr_accessible :template_id
   
   belongs_to :template, class_name: 'Refinery::Widgets::Template'
   

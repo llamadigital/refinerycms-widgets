@@ -19,7 +19,7 @@ module Refinery
         end
 
         Refinery::Core.configure do |config| #   # Register extra javascript for backend
-          config.register_javascript 'refinery/widgets.js.coffee.erb'
+          config.register_javascript 'refinery/widgets.js'
           config.register_javascript 'refinery/engage.itoggle-min.js'
           config.register_stylesheet "refinery/widgets", :media => 'screen'
           config.register_stylesheet "refinery/engage.itoggle", :media => 'screen'
