@@ -27,6 +27,8 @@
                 = widget.templates.collect{|p| p.name }.to_sentence
             td
               - if current_page?(refinery.url_for(action: 'page'))
-                = link_to_function('Select', "selectExistingWidgetForPage(#{widget.id})")
+                = content_tag(:a, 'Select', class: 'select-widget-page',
+                  data: {id: widget.id})
               - else
-                = link_to_function('Select', "selectExistingWidgetForTemplate(#{widget.id})")
+                = content_tag(:a, 'Select', class: 'select-widget-template',
+                  data: {id: widget.id})

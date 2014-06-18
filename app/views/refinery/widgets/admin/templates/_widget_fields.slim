@@ -9,8 +9,10 @@
           span.sub-title style = 'margin-left: 20px;' Used in #{pluralize (f.object.times_used-1), 'other place'}
     .right 
       .icons
-        = link_to_function(refinery_icon_tag('bin_closed'), 'removeWidget(this)', :title => "Remove widget" )
-        = link_to_function(refinery_icon_tag('zoom'), 'toggleWidget(this)', :title => "Toggle details")
+        = content_tag(:a, refinery_icon_tag('bin_closed'), class: 'remove-widget',
+          title: 'Remove widget')
+        = content_tag(:a, refinery_icon_tag('zoom'), class: 'toggle-widget',
+          title: 'Toggle details')
   .inner.clear style="margin-top:40px;"
     .clear
       = f.hidden_field :sub_type

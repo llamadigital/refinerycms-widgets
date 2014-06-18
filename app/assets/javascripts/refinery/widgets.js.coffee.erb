@@ -2,6 +2,10 @@ jQuery ->
 
   initDisabled()
 
+  $('a.select-widget-template').click ->
+    selectExistingWidgetForTemplate($(this).data('id'))
+  $('a.select-widget-page').click ->
+    selectExistingWidgetForPage($(this).data('id'))
 
   if $('#new_widget #widget_type').length > 0
     $('#new_widget #widget_type.template').change (event) ->
@@ -75,6 +79,12 @@ window.initWidgets = ->
   WYMeditor.init() 
   assessOrder()
   initDisabled()
+  $('a.remove-widget').click ->
+    removeWidget(this)
+  $('a.toggle-widget').click ->
+    toggleWidget(this)
+  $('a.edit-widget').click ->
+    showWidgetEdit(this)
 
 window.linkFromDialog = (linkUrl) ->
   window.parent.location = linkUrl

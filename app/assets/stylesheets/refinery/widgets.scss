@@ -33,6 +33,7 @@
   .type {
     margin-left: 20px;
   }
+  a { cursor: pointer; }
 } 
 .clear {
   clear: both;
@@ -52,6 +53,7 @@ table.existing_widgets, table.select_template {
       border: 1px solid #CCC;
     }
   }
+  a { cursor: pointer; }
 }
 
 .sub-title { font-size: 0.9em; opacity: 0.8; }
