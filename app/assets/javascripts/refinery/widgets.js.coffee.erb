@@ -1,11 +1,8 @@
 jQuery ->
 
   initDisabled()
-
-  $('a.select-widget-template').click ->
-    selectExistingWidgetForTemplate($(this).data('id'))
-  $('a.select-widget-page').click ->
-    selectExistingWidgetForPage($(this).data('id'))
+  initExistingWidgetSelect()
+  initWidgets()
 
   if $('#new_widget #widget_type').length > 0
     $('#new_widget #widget_type.template').change (event) ->
@@ -41,6 +38,12 @@ jQuery ->
                       stop: =>
                         assessOrder()
                      })
+
+window.initExistingWidgetSelect = () ->
+  $('a.select-widget-template').click ->
+    selectExistingWidgetForTemplate($(this).data('id'))
+  $('a.select-widget-page').click ->
+    selectExistingWidgetForPage($(this).data('id'))
 
 window.initDisabled = () ->
   $('[data-disabled-master]').each (index,element) ->
