@@ -12,4 +12,6 @@ table.select_template
         td = template.name
         td = template.unlocked_template_parts.collect(&:name).to_sentence
         td = Refinery::Page.where(template_id: template.id).count
-        td = link_to_function 'Use this template', "linkFromDialog('#{refinery.new_admin_page_path(parent_id: @parent_id, template_id: template.id)}')"
+        td = content_tag(:a, 'Use this template',
+          data: {'link-from-dialog' => refinery.new_admin_page_path(parent_id: @parent_id, template_id: template.id)},
+          class: 'dialog-link')

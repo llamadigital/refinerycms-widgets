@@ -4,6 +4,9 @@ jQuery ->
   initExistingWidgetSelect()
   initWidgets()
 
+  $('.dialog-link').click (event) ->
+    linkFromDialog($(this).data('link-from-dialog'))
+
   if $('#new_widget #widget_type').length > 0
     $('#new_widget #widget_type.template').change (event) ->
       selected = $(this).val()

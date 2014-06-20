@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.summary           = 'Widgets extension for Refinery CMS'
   s.require_paths     = %w(lib)
   s.files             = Dir["{app,config,db,lib}/**/*"]
-  s.authors           = 'Nick Bolt'
+  s.authors           = ['Nick Bolt', 'Daniel King']
 
   # Runtime dependencies
   s.add_dependency             'refinerycms-core',    '~> 3.0.0.dev'
