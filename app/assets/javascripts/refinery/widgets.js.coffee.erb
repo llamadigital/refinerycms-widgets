@@ -1,7 +1,11 @@
 jQuery ->
 
   initDisabled()
+  initExistingWidgetSelect()
+  initWidgets()
 
+  $('.dialog-link').click (event) ->
+    linkFromDialog($(this).data('link-from-dialog'))
 
   if $('#new_widget #widget_type').length > 0
     $('#new_widget #widget_type.template').change (event) ->
@@ -37,6 +41,12 @@ jQuery ->
                       stop: =>
                         assessOrder()
                      })
+
+window.initExistingWidgetSelect = () ->
+  $('a.select-widget-template').click ->
+    selectExistingWidgetForTemplate($(this).data('id'))
+  $('a.select-widget-page').click ->
+    selectExistingWidgetForPage($(this).data('id'))
 
 window.initDisabled = () ->
   $('[data-disabled-master]').each (index,element) ->
@@ -75,6 +85,12 @@ window.initWidgets = ->
   WYMeditor.init() 
   assessOrder()
   initDisabled()
+  $('a.remove-widget').click ->
+    removeWidget(this)
+  $('a.toggle-widget').click ->
+    toggleWidget(this)
+  $('a.edit-widget').click ->
+    showWidgetEdit(this)
 
 window.linkFromDialog = (linkUrl) ->
   window.parent.location = linkUrl

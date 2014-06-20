@@ -1,3 +1,10 @@
+module WidgetsPagesController
+  private
+  def permitted_params
+    params.require(:page).permit!
+  end
+end
+
 Refinery::Admin::PagesController.class_eval do 
   before_filter :load_valid_templates, :only => [:edit, :new, :update, :create]
 
@@ -20,4 +27,7 @@ Refinery::Admin::PagesController.class_eval do
     end
     super
   end
+
+  prepend WidgetsPagesController
+
 end

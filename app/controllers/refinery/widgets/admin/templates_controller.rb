@@ -22,6 +22,11 @@ module Refinery
           end
         end
 
+        private
+        def template_params
+          params.require(:template).permit!
+        end
+
       end
     end
   end

@@ -1,5 +1,4 @@
 Refinery::Page.class_eval do
-  attr_accessible :template_id
   
   belongs_to :template, class_name: 'Refinery::Widgets::Template'
   
@@ -20,7 +19,8 @@ Refinery::Page.class_eval do
   end
 
   def ordered_parts
-    (::Refinery::Pages.default_parts.collect{|dp| parts.find{|p| p.title == dp } } + parts).uniq
+    (::Refinery::Pages.default_parts.collect{|dp| parts.find{|p| p.title == dp } } + parts)
+    .uniq.compact
   end
 
   def self.find_or_create_by_link_url!(link_url, options={})

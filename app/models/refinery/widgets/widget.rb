@@ -8,9 +8,6 @@ module Refinery
 
 
       attr_accessor :widget_attributes
-      attr_accessible :name, :position, :container_type, :container_id, 
-        :display, :master_id, :sub_type, :locked, :widget_attributes,
-        :widget_id, :layout, :container, :reuse
 
       validate :validate_widget
 

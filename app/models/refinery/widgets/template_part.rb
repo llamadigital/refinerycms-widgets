@@ -3,12 +3,10 @@ module Refinery
     class TemplatePart < Refinery::Core::BaseModel
 
       belongs_to :template
-      has_many :widgets, class_name: 'Refinery::Widgets::Widget', 
-        as: :container, order: 'position'
+      has_many :widgets, -> { order(:position) },
+        class_name: 'Refinery::Widgets::Widget', as: :container
         
       accepts_nested_attributes_for :widgets, :allow_destroy => true
-
-      attr_accessible :name, :display, :locked, :widgets_attributes
 
       validates :name, :presence => true, :uniqueness => {:scope => 'template_id'}
 
