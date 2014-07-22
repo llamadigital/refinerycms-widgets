@@ -97,7 +97,7 @@ module Refinery
       private
         
         def update_widget
-          widget.attributes = @widget_attributes if widget
+          widget.attributes = @widget_attributes if widget && @widget_attributes
         end
 
         def validate_widget
