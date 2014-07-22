@@ -1,6 +1,6 @@
 module WidgetsPagesController
   private
-  def permitted_params
+  def page_params
     params.require(:page).permit!
   end
 end
