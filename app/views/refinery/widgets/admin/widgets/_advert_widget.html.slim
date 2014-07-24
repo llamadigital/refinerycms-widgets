@@ -4,6 +4,5 @@
 .field
   = f.label :url
   = f.text_field :url, :class => 'widest'
-.field
-  = f.label :image
-  = f.collection_select(:image_id, ::Refinery::Image.all, :id, :url)
+= render partial: 'refinery/admin/image_picker',
+  locals: { f: f, field: :image_id, image: f.object.image }
