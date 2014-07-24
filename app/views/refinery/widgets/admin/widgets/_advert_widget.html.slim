@@ -1,0 +1,9 @@
+.field
+  = f.label :name
+  = f.text_field :name, :class => 'widest'
+.field
+  = f.label :url
+  = f.text_field :url, :class => 'widest'
+.field
+  = f.label :image
+  = f.collection_select(:image_id, ::Refinery::Image.all, :id, :url)
