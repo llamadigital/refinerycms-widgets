@@ -1,10 +1,3 @@
-module WidgetsPagesController
-  private
-  def page_params
-    params.require(:page).permit!
-  end
-end
-
 Refinery::Admin::PagesController.class_eval do 
   before_filter :load_valid_templates, :only => [:edit, :new, :update, :create]
 
@@ -28,6 +21,11 @@ Refinery::Admin::PagesController.class_eval do
     super
   end
 
-  prepend WidgetsPagesController
+  private
+  def page_params_with_permit_all 
+    params.require(:page).permit!
+  end
+
+  alias_method_chain :page_params, :permit_all
 
 end
