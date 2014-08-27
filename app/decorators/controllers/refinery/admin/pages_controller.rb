@@ -5,6 +5,7 @@ Refinery::Admin::PagesController.class_eval do
     if params[:action] == 'new'
       if params[:template_id]
         @template = Refinery::Widgets::Template.find(params[:template_id])
+        @page.template = @template
         @page.parts = []
         @template.template_parts.each_with_index do |template_part, index|
           page_part = Refinery::PagePart.new(:title => template_part.name, :position => index, :locked => template_part.locked)
