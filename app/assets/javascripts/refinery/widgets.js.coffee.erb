@@ -19,6 +19,7 @@ jQuery ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
           window.parent.initWidgets()
+          window.parent.init_refinery_admin()
           window.parent.refinery_dialog_success()
     $('#new_widget #widget_type.page').change (event) ->
       selected = $(this).val()
@@ -31,6 +32,7 @@ jQuery ->
           target = window.parent.$("a#add_widget_" + activePart)
           $(data).insertBefore(target)
           window.parent.initWidgets()
+          window.parent.init_refinery_admin()
           window.parent.refinery_dialog_success()
           
   $('[data-sortable="widgets"]').each (index, value) ->
