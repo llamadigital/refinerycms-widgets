@@ -85,6 +85,8 @@ window.selectExistingWidgetForPage = (id) ->
 
 window.initWidgets = ->
   WYMeditor.init() 
+  $('script.image-picker').each ->
+    $.globalEval($(this).html())
   assessOrder()
   initDisabled()
   $('a.remove-widget').click ->
