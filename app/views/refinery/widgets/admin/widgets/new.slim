@@ -1,34 +1,42 @@
 #new_widget
-  h3 Add new
-  = select_tag :widget_type, options_for_select([['Select type...', nil]] + Refinery::Widgets::WidgetType.all.sort_by(&:name).map{|t| [t.name, t.klass_as_string] }), :class => current_page?(refinery.url_for(:action => 'page')) ? 'page' : 'template'
+  .left-side
+    h3 Add new
+    div class="widget-list #{current_page?(refinery.url_for(:action => 'page')) ? 'new-page' : 'template'}"
+      - Refinery::Widgets::WidgetType.all.sort_by(&:name).each do |widget_type|
+        a href='#' data-value=widget_type.klass_as_string
+          = widget_type.name
+          - if widget_type.description.present?
+            br
+            small = widget_type.description
 
-  - if @widgets.any?
-    h3 Select existing
-    table.existing_widgets
-      thead
-        tr.titles
-          th Name
-          th Type
-          - if current_page?(refinery.url_for(action: 'page'))
-            th Pages
-          - else
-            th Templates 
-          th &nbsp
-      tbody
-        - @widgets.each do |widget|
-          tr class = cycle('dark', 'light')
-            td = widget.name
-            td = widget.widget_type.name
+  .right-side
+    - if @widgets.any?
+      h3 Select existing
+      table.existing_widgets
+        thead
+          tr.titles
+            th Name
+            th Type
             - if current_page?(refinery.url_for(action: 'page'))
-              td
-                = widget.pages.collect{|p| p.title }.to_sentence
+              th Pages
             - else
-              td
-                = widget.templates.collect{|p| p.name }.to_sentence
-            td
+              th Templates 
+            th &nbsp
+        tbody
+          - @widgets.each do |widget|
+            tr class = cycle('dark', 'light')
+              td = widget.name
+              td = widget.widget_type.name
               - if current_page?(refinery.url_for(action: 'page'))
-                = content_tag(:a, 'Select', class: 'select-widget-page',
-                  data: {id: widget.id})
+                td
+                  = widget.pages.collect{|p| p.title }.to_sentence
               - else
-                = content_tag(:a, 'Select', class: 'select-widget-template',
-                  data: {id: widget.id})
+                td
+                  = widget.templates.collect{|p| p.name }.to_sentence
+              td
+                - if current_page?(refinery.url_for(action: 'page'))
+                  = content_tag(:a, 'Select', class: 'select-widget-page',
+                    data: {id: widget.id})
+                - else
+                  = content_tag(:a, 'Select', class: 'select-widget-template',
+                    data: {id: widget.id})

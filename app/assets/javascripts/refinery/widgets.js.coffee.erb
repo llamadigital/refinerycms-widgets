@@ -7,33 +7,13 @@ jQuery ->
   $('.dialog-link').click (event) ->
     linkFromDialog($(this).data('link-from-dialog'))
 
-  if $('#new_widget #widget_type').length > 0
-    $('#new_widget #widget_type.template').change (event) ->
-      selected = $(this).val()
-      if selected != ''
-        activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
-        index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
-        data = {sub_type: selected, index: index}
-        url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_template'
-        $.ajax({url: url, data: data}).done (data) ->
-          target = window.parent.$("a#add_widget_" + activePart)
-          $(data).insertBefore(target)
-          window.parent.initWidgets()
-          window.parent.init_refinery_admin()
-          window.parent.refinery_dialog_success()
-    $('#new_widget #widget_type.page').change (event) ->
-      selected = $(this).val()
-      if selected != ''
-        activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
-        index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
-        data = {sub_type: selected, index: index}
-        url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_page'
-        $.ajax({url: url, data: data}).done (data) ->
-          target = window.parent.$("a#add_widget_" + activePart)
-          $(data).insertBefore(target)
-          window.parent.initWidgets()
-          window.parent.init_refinery_admin()
-          window.parent.refinery_dialog_success()
+  if $('#new_widget').length > 0
+    $('#new_widget .widget-list.new-page a').on 'click', (e) ->
+      e.preventDefault()
+      selectWidgetTypeForNewPage($(this).data('value'))
+    $('#new_widget .widget-list.template a').on 'click', (e) ->
+      e.preventDefault()
+      selectWidgetTypeForTemplate($(this).data('value'))
           
   $('[data-sortable="widgets"]').each (index, value) ->
     $(value).sortable({handle: '.handle', \
@@ -43,6 +23,32 @@ jQuery ->
                       stop: =>
                         assessOrder()
                      })
+
+window.selectWidgetTypeForNewPage = (selected) ->
+  if selected != ''
+    activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
+    index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
+    data = {sub_type: selected, index: index}
+    url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_page'
+    $.ajax({url: url, data: data}).done (data) ->
+      target = window.parent.$("a#add_widget_" + activePart)
+      $(data).insertBefore(target)
+      window.parent.initWidgets()
+      window.parent.init_refinery_admin()
+      window.parent.refinery_dialog_success()
+
+window.selectWidgetTypeForTemplate = (selected) ->
+  if selected != ''
+    activePart = window.parent.$('li.ui-tabs-active').attr('aria-controls')
+    index = window.parent.$('#template_part_index_' + activePart).attr('data-index')
+    data = {sub_type: selected, index: index}
+    url = '/<%= Refinery::Core.backend_route %>/widgets/widget_types/new_for_template'
+    $.ajax({url: url, data: data}).done (data) ->
+      target = window.parent.$("a#add_widget_" + activePart)
+      $(data).insertBefore(target)
+      window.parent.initWidgets()
+      window.parent.init_refinery_admin()
+      window.parent.refinery_dialog_success()
 
 window.initExistingWidgetSelect = () ->
   $('a.select-widget-template').click ->
