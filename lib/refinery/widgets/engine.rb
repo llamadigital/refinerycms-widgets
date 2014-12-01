@@ -11,10 +11,6 @@ module Refinery
           plugin.name = "templates"
           plugin.url = proc { Refinery::Core::Engine.routes.url_helpers.widgets_admin_templates_path }
           plugin.pathname = root
-          plugin.activity = {
-            :class_name => :'refinery/widgets/template',
-            :title => 'name'
-          }
           plugin.menu_match = %r{refinery/widgets/templates(/.*)?$}
         end
 

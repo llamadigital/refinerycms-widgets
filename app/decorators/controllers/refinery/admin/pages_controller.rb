@@ -1,5 +1,4 @@
 Refinery::Admin::PagesController.class_eval do 
-  before_filter :load_valid_templates, :only => [:edit, :new, :update, :create]
 
   def render(*args)
     if params[:action] == 'new'
